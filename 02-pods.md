@@ -74,3 +74,13 @@ kubectl exec my-nginx -it sh
 ```
 
 ## POD Health
+
+3 ways to check health
+
+1. Run a command in pod
+2. Connect to a socket and check if it goes though
+3. Run a HTTP request and check its a OK response
+
+[Link to liveness Docs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
+
+[HTTP liveness - YAML](nginx-pod-liveness.yaml)

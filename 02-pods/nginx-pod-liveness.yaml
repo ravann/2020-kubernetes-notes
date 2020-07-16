@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx-liveness
+  labels:
+    app: nginx
+    rel: stable
+spec:
+  containers:
+    - name: nginx-liveness
+      image: nginx:alpine
+      ports:
+        - containerPort: 80
+      livenessProbe:
+        httpGet:
+          path: /index.html # Get this file
+          port: 80 # Connect to this port
+        initialDelaySeconds: 10 # Start checking 10 seconds after pod starts
+        timeoutSeconds: 2 # Timeout if there is no response for 2 seconds
+        periodSeconds: 5 # Check every 5 seconds
+        failureThreshold: 2 # Kill the pod after 2 failures
