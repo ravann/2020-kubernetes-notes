@@ -81,6 +81,16 @@ kubectl exec my-nginx -it sh
 2. Connect to a socket and check if it goes though
 3. Run a HTTP request and check its a OK response
 
+3 types of checks
+
+1. **Startup probe** - if defined waits for this probe to succeed before other probes are kicked off. This ensures other probes doesnt interfere with the container startup process
+2. **Readiness probe** - checks if the container is ready to accept connections. A pod is considered ready when all its containers are ready. If the readiness probe fails, the endpoints controller will remove the IP address from all services.
+3. **Livenes probe** - checks if container is healthy else will restart it
+
 [Link to liveness Docs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 
+[EXEC liveness - YAML](exec-liveness.yaml)
+
 [HTTP liveness - YAML](nginx-pod-liveness.yaml)
+
+[TCP liveness and readiness - YAML](tcp-liveness-readiness.yaml)
