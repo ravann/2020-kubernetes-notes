@@ -9,3 +9,4 @@
 
 - https://app.pluralsight.com/library/courses/kubernetes-developers-core-concepts/
 - http://kubernetes.io/
+- https://www.katacoda.com/courses/kubernetes
