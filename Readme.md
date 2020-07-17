@@ -4,6 +4,7 @@
 
 - [Setup](01-setup.md)
 - [Pods](02-pods.md)
+- [Deployments](03-deployments.md)
 
 ## References:
 
