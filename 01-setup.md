@@ -1,6 +1,8 @@
-# KUBERNETES SETUP
+# KUBERNETES SETUP FOR LEARNING
 
 Use docker desktop, enable kubernetes
+
+Kind seems to be getting more popular as a desktop variant.
 
 # KUBERNETES BASIC COMMANDS
 
