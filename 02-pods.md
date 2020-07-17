@@ -31,7 +31,7 @@ kubectl port-forward deployment/nginx 8080:80
 
 ## YAML
 
-[NGINX YAML](nginx-pod.yaml)
+[NGINX YAML](02-pods/nginx-pod.yaml)
 
 ```bash
 kubectl create -f nginx-pod.yaml --dry-run --validate=true
@@ -89,8 +89,8 @@ kubectl exec my-nginx -it sh
 
 [Link to liveness Docs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 
-[EXEC liveness - YAML](exec-liveness.yaml)
+[EXEC liveness - YAML](02-pods/exec-liveness.yaml)
 
-[HTTP liveness - YAML](nginx-pod-liveness.yaml)
+[HTTP liveness - YAML](02-pods/nginx-pod-liveness.yaml)
 
-[TCP liveness and readiness - YAML](tcp-liveness-readiness.yaml)
+[TCP liveness and readiness - YAML](02-pods/tcp-liveness-readiness.yaml)
