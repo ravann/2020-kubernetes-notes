@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #  annotations:
+  #    deployment.kubernetes.io/revision: "1"
+  #  creationTimestamp: "2020-07-17T04:02:12Z"
+  #  generation: 1
+  labels:
+    run: nginx-rep
+  name: nginx-rep
+  namespace: default
+#  resourceVersion: "203672"
+#  selfLink: /apis/apps/v1/namespaces/default/deployments/nginx-rep
+#  uid: 438acfd3-4113-4641-9104-55ceae7434f1
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 5
+  #  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: nginx-rep
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      #      creationTimestamp: null
+      labels:
+        run: nginx-rep
+    spec:
+      containers:
+        - image: nginx
+          imagePullPolicy: Always
+          name: nginx-rep
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /index.html # Get this file
+              port: 80 # Connect to this port
+            initialDelaySeconds: 10 # Start checking 10 seconds after pod starts
+            timeoutSeconds: 2 # Timeout if there is no response for 2 seconds
+            periodSeconds: 5 # Check every 5 seconds
+            failureThreshold: 2 # Kill the pod after 2 failures
+      #        terminationMessagePath: /dev/termination-log
+      #        terminationMessagePolicy: File
+      #      dnsPolicy: ClusterFirst
+      #      restartPolicy: Always
+      #      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
