@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-rep-lb
+spec:
+  type: LoadBalancer
+  selector:
+    run: nginx-rep
+  ports:
+    - name: "http"
+      port: 8080 # Port on node
+      targetPort: 80 # Port on pod

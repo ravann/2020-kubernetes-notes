@@ -37,6 +37,11 @@ Now connect to a random pod running on the same namespace ( not sure at this poi
 
 Both the service name and IP Address are recognized by the node!!!
 
+ClusterIP doesnt expose the service outside Kubernetes. To do this we need to either
+
+1. proxy
+2. port forward
+
 ### Node Port
 
 Simply put, **Node Port** = ClusterIP + Port Forwarding in one. Node port for nginx-rep service:
@@ -60,3 +65,19 @@ Connecting to the service from a pod ( similar to how we did using ClusterIP)
 Connecting to the service from host
 
 ![Connecting from host](04-services/np_curl_from_host.png)
+
+### Load Balancer
+
+To understand NodePort vs. LoadBalancer refer to the article below:
+
+https://www.ovh.com/blog/getting-external-traffic-into-kubernetes-clusterip-nodeport-loadbalancer-and-ingress/
+
+Load Balancer configuration for nginx-rep deployment:
+
+[LoadBalancer for nginx-rep](04-services/nginx-rep-s_lb.yaml)
+
+### Test Load Balancer
+
+Below image shows the servers on kubernetes and curl response.
+
+![Load Balancer](04-services/lb_services_curl_test.png)
