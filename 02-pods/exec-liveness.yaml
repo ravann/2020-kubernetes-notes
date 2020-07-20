@@ -20,3 +20,4 @@ spec:
         initialDelaySeconds: 5
         periodSeconds: 5
         failureThreshold: 2
+  terminationGracePeriodSeconds: 30
