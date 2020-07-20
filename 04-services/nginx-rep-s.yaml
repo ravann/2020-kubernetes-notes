@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-rep
+spec:
+  type: ClusterIP
+  selector:
+    run: nginx-rep
+  ports:
+    - port: 80
+      targetPort: 80
