@@ -17,11 +17,15 @@ Refer to the below sample nginx-serv deployment and service files.
 
 The below service file is used to create network for nginx-rep file that was worked in deployments section.
 
-[nginx-rep-s YAML](04-services/nginx-rep-s.yaml)
+[nginx-rep-s YAML](04-services/nginx-rep-s_cip.yaml)
+
+```bash
+kubectl apply -f nginx-rep-s_cip.yaml
+```
 
 Notice, the selector is a run label as the label defined in the deployment is run.
 
-### Testing ClusterIP
+#### Testing ClusterIP
 
 Before we start to test, lets look at things running on my kubernetes cluster.
 
@@ -32,3 +36,27 @@ Now connect to a random pod running on the same namespace ( not sure at this poi
 ![test service is working](04-services/cip_test_service.png)
 
 Both the service name and IP Address are recognized by the node!!!
+
+### Node Port
+
+Simply put, **Node Port** = ClusterIP + Port Forwarding in one. Node port for nginx-rep service:
+
+[nginx-rep nodeport YAML](04-services/nginx-rep-s_np.yaml)
+
+```bash
+kubectl apply -f nginx-rep-s_np.yaml
+```
+
+#### Testing NodePort
+
+List of all services running on cluster
+
+![List of services](04-services/np_get_services.png)
+
+Connecting to the service from a pod ( similar to how we did using ClusterIP)
+
+![Connecting from pod](04-services/np_curl_from_pod.png)
+
+Connecting to the service from host
+
+![Connecting from host](04-services/np_curl_from_host.png)
