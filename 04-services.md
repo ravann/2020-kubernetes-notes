@@ -20,3 +20,15 @@ The below service file is used to create network for nginx-rep file that was wor
 [nginx-rep-s YAML](04-services/nginx-rep-s.yaml)
 
 Notice, the selector is a run label as the label defined in the deployment is run.
+
+### Testing ClusterIP
+
+Before we start to test, lets look at things running on my kubernetes cluster.
+
+![kubectl get all](04-services/cip_k_get_all.png)
+
+Now connect to a random pod running on the same namespace ( not sure at this point if namespace makes a difference)
+
+![test service is working](04-services/cip_test_service.png)
+
+Both the service name and IP Address are recognized by the node!!!
