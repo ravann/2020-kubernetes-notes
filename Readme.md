@@ -6,6 +6,7 @@
 - [Pods](02-pods.md)
 - [Deployments](03-deployments.md)
 - [Services](04-services.md)
+- [Storage](05-storage.md)
 
 ## References:
 
